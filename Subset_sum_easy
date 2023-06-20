@@ -1,0 +1,65 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner (System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+			int n=sc.nextInt();
+			int []A=new int[n];
+			for(int j=0;j<n;j++)
+			{
+				A[j]=sc.nextInt();
+			}
+			List<List<Integer>>res=new ArrayList<>();
+			
+	        List<Integer>list=new ArrayList<>();
+            print(A,res,list,0);
+            boolean flag=false;
+            for(int k=0;k<res.size();k++)
+            {
+                if(check(res.get(k)))
+                {
+                    System.out.println("Yes");
+                    flag=true;
+                    break;
+                }
+            }
+            if(flag==false)
+            {
+                System.out.println("No");
+            }
+		}
+    }
+	  public static void print(int []A,List<List<Integer>>res,List<Integer>list,int index)
+	{
+	    if(index>=A.length)
+	    {
+	        res.add(new ArrayList<>(list));
+	        return ;
+	    }
+	    print(A,res,list,index+1);
+	    list.add(A[index]);
+	    print(A,res,list,index+1);
+	    list.remove(list.size()-1);
+	    
+	}
+	public static boolean check(List<Integer>li)
+	{
+	    if(li.size()==0)
+	    {
+	        return false;
+	    }
+		int sum=0;
+		for(int i=0;i<li.size();i++)
+		{
+			sum=sum+li.get(i);
+		}
+		if(sum==0)
+		{
+			return true;
+		}
+		return false;
+	}
+}
