@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        int ans=0;
+        print(s,ans);
+    }
+    public static void print(String s,int ans)
+    {
+        if(s.length()==0)
+        {
+            System.out.print(ans);
+            return ;
+        }
+        char ch=s.charAt(0);
+        ans=ans*10+Character.getNumericValue(ch);
+        print(s.substring(1),ans);
+    }
+}
