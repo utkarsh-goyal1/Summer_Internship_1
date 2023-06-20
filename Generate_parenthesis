@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner (System.in);
+		int n=sc.nextInt();
+		print(n,"",0,0);
+    }
+	public static void print(int n,String ans,int open,int close)
+	{
+		if(open==n && close==n)
+		{
+			System.out.println(ans);
+			return ;
+		}
+		if(close<open)
+		{
+			print(n,ans+")",open,close+1);
+		}
+		if(open<n)
+		{
+			print(n,ans+"(",open+1,close);
+		}
+		
+	}
+}
