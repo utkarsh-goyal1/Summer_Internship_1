@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main {
+    static HashMap<Integer,Character>d=new HashMap<>();
+    public static void main(String args[]) {
+        Scanner sc=new Scanner (System.in);
+        int n=sc.nextInt();
+        char ch='A';
+        for(int i=1;i<=26;i++)
+        {
+            d.put(i,ch);
+            ch++;
+        }
+        String s=Integer.toString(n);
+        String ans="";
+        print(s,ans);
+    }
+    public static void print(String s,String ans)
+    {
+        if(s.length()==0)
+        {
+            System.out.println(ans+" ");
+            return ;
+        }
+        char ch=s.charAt(0);
+        char res=d.get(Character.getNumericValue(ch));
+        print(s.substring(1),ans+res);
+        if(s.length()>=2)
+        {
+            String temp=s.substring(0,2);
+            int n=Integer.parseInt(temp);
+            if(n<=27)
+            {
+                print(s.substring(2),ans+d.get(n));
+            }
+        }
+    }
+
+
+}
