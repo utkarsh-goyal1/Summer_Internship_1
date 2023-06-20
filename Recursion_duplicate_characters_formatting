@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner (System.in);
+		String s=sc.next();
+		find(s,"");
+    }
+	public static void  find(String ques,String ans)
+	{
+		if(ques.length()==1)
+		{
+			ans+=ques.charAt(0);
+			System.out.println(ans+" ");
+			return ;
+		}
+		char ch=ques.charAt(0);
+		char ch2=ques.charAt(1);
+		if(ch==ch2)
+		{
+			find(ques.substring(1),ans+ch+"*");
+		}
+		else
+		{
+			find(ques.substring(1),ans+ch);
+		}
+	}
+}
