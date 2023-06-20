@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner (System.in);
+		int n=sc.nextInt();
+		print(n,"T1","T3","T2");
+        System.out.println(count);
+    }
+    static int count=-1;
+	public static void print(int disks,String src,String hlp,String des)
+	{
+        if(disks==0)
+        {
+            count++;
+            return ;
+        }
+        print(disks-1,src,des,hlp);
+        System.out.println("Move "+disks+"th "+"disc from "+src+" to "+des);
+        print(disks-1,hlp,src,des);
+	}
+}
