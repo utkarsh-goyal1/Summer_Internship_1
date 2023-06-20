@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[]args)
+	{
+		Scanner sc=new Scanner(System.in);
+		String s=sc.next();
+		subsequence(s,"");
+		System.out.println();
+		System.out.print(count);
+	}
+	static int count=0;
+	public static void subsequence(String s,String emp)
+	{
+		if(s.length()==0)
+		{
+			count++;
+			System.out.print(emp+" ");
+			return ;
+		}
+		char ch=s.charAt(0);
+		subsequence(s.substring(1),emp);
+		subsequence(s.substring(1),emp+ch);
+	}
+}
