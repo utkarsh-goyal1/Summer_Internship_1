@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner (System.in);
+		int n=sc.nextInt();
+		String s=Integer.toString(n);
+		String []A={"","abc","def","ghi","jkl","mno","pqrs","tuv","wx","yz"};
+		print(s,A,"");
+		System.out.println();
+		int c=count;
+		count=0;
+		System.out.print(c);
+
+    }
+	static int count=0;
+	public static void print(String ques,String []A,String ans)
+	{
+		if(ques.length()==0)
+		{
+			System.out.print(ans+" ");
+			count++;
+			return ;
+		}
+		char ch=ques.charAt(0);
+		int n=Character.getNumericValue(ch);
+		String part=A[n];
+		for(int i=0;i<part.length();i++)
+		{
+			print(ques.substring(1),A,ans+part.charAt(i));
+		}
+	}
+}
