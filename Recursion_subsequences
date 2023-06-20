@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner (System.in);
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+			String s=sc.next();
+			List<String>li=new ArrayList<>();
+			print(s,"",li);
+			Collections.sort(li);
+			for(int j=0;j<li.size();j++)
+			{
+				System.out.println(li.get(j));
+			}
+		}
+    }
+	public static void print(String ques,String ans,List<String>li)
+	{
+		if(ques.length()==0)
+		{
+			li.add(ans);
+			return ;
+		}
+		char ch=ques.charAt(0);
+		print(ques.substring(1),ans+ch,li);
+		print(ques.substring(1),ans,li);
+	}
+}
