@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner (System.in);
+		String s=sc.next();
+		char []A=s.toCharArray();
+		print(A,"",0);
+		int c=count;
+		count=0;
+		System.out.println();
+		System.out.print(c);
+    }
+	static int count=0;
+	public static void print(char []A,String ans,int index)
+	{
+		if(index>=A.length)
+		{
+			System.out.print(ans+" ");
+			count++;
+			return ;
+		}
+		print(A,ans,index+1);
+		print(A,ans+A[index],index+1);
+		String ascii=String.valueOf((int)A[index]);
+		print(A,ans+ascii,index+1);
+	}
+}
