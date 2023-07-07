@@ -1,0 +1,33 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+        int n1=sc.nextInt();
+        int n2=sc.nextInt();
+        int cr=0;
+        int cc=0;
+        String ans="";
+        print(n1,n2,cr,cc,ans);
+        System.out.println();
+        System.out.print(count);
+        
+    }
+    static int count=0;
+    public static void print(int n1,int n2,int cr,int cc,String ans)
+    {
+        if(cr==n1-1 && cc==n2-1)
+        {
+            System.out.print(ans+" ");
+            count++;
+            return ;
+        }
+        if(cr>n1-1 || cc>n2-1)
+        {
+            return;
+        }
+        print(n1,n2,cr+1,cc,ans+"V");
+        print(n1,n2,cr,cc+1,ans+"H");
+        print(n1,n2,cr+1,cc+1,ans+"D");
+        
+    }
+}
