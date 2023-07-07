@@ -1,0 +1,58 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        char [][]A=new char[n][m];
+        for(int i=0;i<n;i++)
+        {
+            String s=sc.next();
+            for(int j=0;j<s.length();j++)
+            {
+                A[i][j]=s.charAt(j);
+            }
+        }
+        int [][]Ans=new int [n][m];
+        printpath(A,0,0,Ans);
+        if(flag==false)
+        {
+            System.out.print(-1);
+        }
+        
+    }
+    static boolean flag=false;
+    public static void printpath(char [][]A,int cr,int cc,int [][]Ans)
+    {
+        if(flag==true)
+        {
+            return ;
+        }
+        if(cr==A.length-1 && cc==A[0].length-1 && A[cr][cc]!='X')
+        {
+            Ans[cr][cc]=1;
+            flag=true;
+            Display(Ans);
+            return ;
+        }
+        if(cr>=A.length || cc>=A[0].length || A[cr][cc]=='X')
+        {
+            return ;
+        }
+        Ans[cr][cc]=1;
+        printpath(A,cr,cc+1,Ans);
+        printpath(A,cr+1,cc,Ans);
+        Ans[cr][cc]=0;
+    }
+    public static void Display(int [][]Ans)
+    {
+        for(int i=0;i<Ans.length;i++)
+        {
+            for(int j=0;j<Ans[0].length;j++)
+            {
+                System.out.print(Ans[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
