@@ -1,0 +1,73 @@
+import java.util.*;
+public class Main {
+    static int count=0;
+	public static void main(String []args)
+	{
+		Scanner sc=new Scanner (System.in);
+		int n=sc.nextInt();
+		boolean [][]A=new boolean [n][n];
+		print(A,0,n,"");
+		System.out.println();
+        System.out.print(count);
+        
+	}
+	public static void print(boolean [][]A,int row,int tq,String ans)
+	{
+		if(tq==0)
+		{
+			System.out.print(ans+" ");
+			count++;
+			return ;
+		}
+		if(row==A.length)
+		{
+			return;
+		}
+		for(int i=0;i<A.length;i++)
+		{
+			if(isSafe(A,row,i)==true)
+			{
+				A[row][i]=true;
+				print(A,row+1,tq-1,ans+"{"+(row+1)+"-"+(i+1)+"} ");
+				A[row][i]=false;
+				
+			}
+		}
+	}
+	public static boolean isSafe(boolean [][]A,int row,int column)
+	{
+		int r=row;
+		int c=column;
+		while(r>=0)
+		{
+			if(A[r][c]==true)
+			{
+				return false;
+			}
+			r--;
+		}
+		r=row;
+		c=column;
+		while(r>=0 && c>=0)
+		{
+			if(A[r][c]==true)
+			{
+				return false;
+			}
+			r--;
+			c--;
+		}
+		r=row;
+		c=column;
+		while(r>=0 && c<A.length)
+		{
+			if(A[r][c]==true)
+			{
+				return false;
+			}
+			r--;
+			c++;
+		}
+		return true;
+	}
+}
